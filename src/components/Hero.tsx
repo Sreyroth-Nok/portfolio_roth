@@ -11,7 +11,7 @@ export const Hero: React.FC = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setShowRealPhoto((prev) => !prev);
-    }, 9000);
+    }, 7000);
 
     return () => clearInterval(timer);
   }, []);
@@ -60,11 +60,11 @@ export const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-panel border border-white/15 text-xs font-mono tracking-widest text-neutral-300 uppercase"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-panel border dark:border-white/15 border-black/10 text-xs font-mono tracking-widest dark:text-neutral-300 text-neutral-700 uppercase"
           >
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
             <span className="w-2 h-2 rounded-full bg-emerald-400 absolute" />
-            <span className="ml-2 font-medium text-white">FULL STACK DEVELOPER</span>
+            <span className="ml-2 font-medium dark:text-white text-neutral-900">FULL STACK DEVELOPER</span>
           </motion.div>
 
           {/* Headline */}
@@ -74,7 +74,7 @@ export const Hero: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="space-y-2"
           >
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.05]">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold dark:text-white text-neutral-900 tracking-tight leading-[1.05]">
               Building Digital <br />
               <span className="shimmer-text">Experiences</span> <br />
               That Actually Work.
@@ -86,17 +86,17 @@ export const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="text-base sm:text-lg text-neutral-400 max-w-xl font-normal leading-relaxed"
+            className="text-base sm:text-lg dark:text-neutral-400 text-neutral-600 max-w-xl font-normal leading-relaxed"
           >
             Software Engineer building modern web and mobile applications for financial, enterprise, and digital experiences. Experienced in{' '}
-            <span className="text-white font-medium">React</span>,{' '}
-            <span className="text-white font-medium">TypeScript</span>,{' '}
-            <span className="text-white font-medium">mobile applications</span>,{' '}
-            <span className="text-white font-medium">loan management systems</span>,{' '}
-            <span className="text-white font-medium">GraphQL</span>,{' '}
-            <span className="text-white font-medium">Laravel</span>,{' '}
-            <span className="text-white font-medium">Python</span>, and{' '}
-            <span className="text-white font-medium">Odoo</span>.
+            <span className="dark:text-white text-black font-semibold">React</span>,{' '}
+            <span className="dark:text-white text-black font-semibold">TypeScript</span>,{' '}
+            <span className="dark:text-white text-black font-semibold">mobile applications</span>,{' '}
+            <span className="dark:text-white text-black font-semibold">loan management systems</span>,{' '}
+            <span className="dark:text-white text-black font-semibold">GraphQL</span>,{' '}
+            <span className="dark:text-white text-black font-semibold">Laravel</span>,{' '}
+            <span className="dark:text-white text-black font-semibold">Python</span>, and{' '}
+            <span className="dark:text-white text-black font-semibold">Odoo</span>.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -108,7 +108,7 @@ export const Hero: React.FC = () => {
           >
             <a
               href="#projects"
-              className="group relative inline-flex items-center gap-3 bg-white text-black px-8 py-4 rounded-xl font-semibold text-sm tracking-wide overflow-hidden hover:bg-neutral-200 transition-all duration-300 shadow-[0_0_30px_rgba(255,255,255,0.25)]"
+              className="group relative inline-flex items-center gap-3 dark:bg-white dark:text-black bg-neutral-900 text-white px-8 py-4 rounded-xl font-semibold text-sm tracking-wide overflow-hidden hover:opacity-90 transition-all duration-300 shadow-lg"
             >
               <span>View My Work</span>
               <ArrowDownRight size={18} className="group-hover:translate-x-1 group-hover:translate-y-1 transition-transform" />
@@ -116,7 +116,7 @@ export const Hero: React.FC = () => {
 
             <a
               href="#contact"
-              className="group inline-flex items-center gap-3 glass-card text-white border border-white/15 px-8 py-4 rounded-xl font-medium text-sm tracking-wide hover:border-white/40 hover:bg-white/5 transition-all duration-300"
+              className="group inline-flex items-center gap-3 glass-card dark:text-white text-neutral-900 border dark:border-white/15 border-black/10 px-8 py-4 rounded-xl font-medium text-sm tracking-wide hover:border-black/30 dark:hover:border-white/40 transition-all duration-300"
             >
               <span>Let's Connect</span>
             </a>
@@ -127,18 +127,18 @@ export const Hero: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1 }}
-            className="pt-6 border-t border-white/10 w-full grid grid-cols-3 gap-4 text-left"
+            className="pt-6 border-t dark:border-white/10 border-black/10 w-full grid grid-cols-3 gap-4 text-left"
           >
             <div>
-              <p className="text-2xl font-bold font-heading text-white">2+</p>
+              <p className="text-2xl font-bold font-heading dark:text-white text-neutral-900">2+</p>
               <p className="text-xs font-mono text-neutral-500 uppercase tracking-wider">Years Experience</p>
             </div>
             <div>
-              <p className="text-2xl font-bold font-heading text-white">Core Banking</p>
+              <p className="text-2xl font-bold font-heading dark:text-white text-neutral-900">Core Banking</p>
               <p className="text-xs font-mono text-neutral-500 uppercase tracking-wider">System Developer</p>
             </div>
             <div>
-              <p className="text-2xl font-bold font-heading text-white">ERP & Odoo</p>
+              <p className="text-2xl font-bold font-heading dark:text-white text-neutral-900">ERP & Odoo</p>
               <p className="text-xs font-mono text-neutral-500 uppercase tracking-wider">Custom Solutions</p>
             </div>
           </motion.div>
@@ -224,19 +224,22 @@ export const Hero: React.FC = () => {
               style={{
                 clipPath: 'polygon(18% 17.7%, 75% 1.9%, 92% 29.8%, 92% 80.6%, 55% 96%, 12% 77.4%)',
               }}
-              className="absolute inset-0 w-full h-full bg-neutral-950 overflow-hidden cursor-pointer z-10"
+              className="absolute inset-0 w-full h-full bg-neutral-900 overflow-hidden cursor-pointer z-10"
               onClick={() => setShowRealPhoto(!showRealPhoto)}
             >
-              {/* Base Layer: Real Photo (me.png) - Bright, Vibrant, Sharp */}
+              {/* Radial White Spotlight Glow behind the portrait */}
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.25)_0%,transparent_70%)] pointer-events-none z-0" />
+
+              {/* Base Layer: Real Photo (me.png) - Ultra Bright, Radiant, Sharp */}
               <motion.img
                 style={{
                   x: imageX,
                   y: imageY,
-                  filter: 'brightness(118%) contrast(108%) saturate(106%)',
+                  filter: 'brightness(145%) contrast(112%) saturate(110%)',
                 }}
                 src={me}
                 alt="Nok Sreyroth Real Portrait"
-                className="absolute inset-0 w-full h-full object-cover object-top scale-100 transition-all duration-300"
+                className="absolute inset-0 w-full h-full object-cover object-top scale-100 transition-all duration-300 z-1"
               />
 
               {/* Top Layer: Cartoon Silver Avatar (cartoonSilver.png) */}
@@ -244,7 +247,7 @@ export const Hero: React.FC = () => {
                 style={{
                   x: imageX,
                   y: imageY,
-                  filter: 'brightness(115%) contrast(108%)',
+                  filter: 'brightness(140%) contrast(110%)',
                 }}
                 src={cartoonSilver}
                 alt="Nok Sreyroth Silver Avatar"
@@ -252,11 +255,11 @@ export const Hero: React.FC = () => {
                   opacity: showRealPhoto ? 0 : 1,
                 }}
                 transition={{ duration: 2.5, ease: 'easeInOut' }}
-                className="absolute inset-0 w-full h-full object-cover object-top scale-100 pointer-events-none"
+                className="absolute inset-0 w-full h-full object-cover object-top scale-100 pointer-events-none z-2"
               />
 
-              {/* Minimal Bottom Gradient Shadow only at the text feet area */}
-              <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+              {/* Subtle Bottom Gradient Shadow for text readability */}
+              <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/50 to-transparent pointer-events-none z-10" />
 
               {/* Bottom Overlay Text Label */}
               <div className="absolute bottom-6 left-12 right-12 z-20 text-center sm:text-left">

@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
   :root {
     --font-heading: 'Space Grotesk', system-ui, -apple-system, sans-serif;
@@ -7,19 +9,28 @@
     --font-mono: 'JetBrains Mono', monospace;
   }
 
+  html.dark,
+  html.dark body {
+    background-color: #030303;
+    color: #e5e5e5;
+  }
+
+  html.light,
+  html.light body {
+    background-color: #f8f9fc;
+    color: #0f172a;
+  }
+
   html {
     scroll-behavior: smooth;
     font-family: var(--font-sans);
-    background-color: #030303;
-    color: #f5f5f5;
   }
 
   body {
-    background-color: #030303;
-    color: #e5e5e5;
     overflow-x: hidden;
     margin: 0;
     padding: 0;
+    transition: background-color 0.4s ease, color 0.4s ease;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -36,38 +47,43 @@
 ::-webkit-scrollbar {
   width: 6px;
 }
-::-webkit-scrollbar-track {
+html.dark ::-webkit-scrollbar-track {
   background: #050505;
 }
-::-webkit-scrollbar-thumb {
+html.dark ::-webkit-scrollbar-thumb {
   background: #262626;
   border-radius: 3px;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #404040;
+html.light ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+html.light ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
 }
 
 /* Background grid patterns */
-.bg-grid-pattern {
+html.dark .bg-grid-pattern {
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
                     linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
   background-size: 40px 40px;
 }
 
-.bg-dots-pattern {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-  background-size: 24px 24px;
+html.light .bg-grid-pattern {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
-/* Custom Utilities */
-.glass-panel {
+/* Glass Panels & Cards for Dark Mode */
+html.dark .glass-panel {
   background: rgba(10, 10, 10, 0.7);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.glass-card {
+html.dark .glass-card {
   background: rgba(18, 18, 18, 0.6);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -75,34 +91,34 @@
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.glass-card:hover {
+html.dark .glass-card:hover {
   border-color: rgba(255, 255, 255, 0.25);
   box-shadow: 0 0 25px rgba(255, 255, 255, 0.04);
 }
 
-/* Glow effects */
-.glow-white-sm {
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+/* Glass Panels & Cards for Light Mode */
+html.light .glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  color: #0f172a;
 }
 
-.glow-white-md {
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+html.light .glass-card {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+  color: #0f172a;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Infinite Marquee Animation */
-@keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
-}
-
-.animate-marquee {
-  display: flex;
-  width: 200%;
-  animation: marquee 25s linear infinite;
-}
-
-.animate-marquee:hover {
-  animation-play-state: paused;
+html.light .glass-card:hover {
+  border-color: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
 }
 
 /* Custom Shimmer */
@@ -111,7 +127,16 @@
   100% { background-position: 200% 0; }
 }
 
-.shimmer-text {
+html.light .shimmer-text {
+  background: linear-gradient(90deg, #333333 0%, #000000 50%, #333333 100%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+html.dark .shimmer-text {
   background: linear-gradient(90deg, #888888 0%, #ffffff 50%, #888888 100%);
   background-size: 200% auto;
   color: transparent;

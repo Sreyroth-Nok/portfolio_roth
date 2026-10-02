@@ -113,7 +113,7 @@ export const Projects: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
-    <section id="projects" className="py-32 relative border-t border-white/10 bg-[#030303] bg-grid-pattern">
+    <section id="projects" className="py-32 relative border-t dark:border-white/10 border-black/10 dark:bg-[#030303] bg-[#f8f9fc] bg-grid-pattern transition-colors duration-400">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         
         {/* Section Header */}
@@ -126,8 +126,8 @@ export const Projects: React.FC = () => {
               transition={{ duration: 0.6 }}
               className="flex items-center gap-3 mb-3"
             >
-              <span className="w-8 h-[1px] bg-white/40" />
-              <span className="text-xs font-mono uppercase tracking-widest text-neutral-400">04 / FEATURED WORKS</span>
+              <span className="w-8 h-[1px] dark:bg-white/40 bg-black/40" />
+              <span className="text-xs font-mono uppercase tracking-widest dark:text-neutral-400 text-neutral-600">04 / FEATURED WORKS</span>
             </motion.div>
 
             <motion.h2
@@ -135,9 +135,9 @@ export const Projects: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight uppercase"
+              className="text-4xl sm:text-5xl font-extrabold dark:text-white text-neutral-900 tracking-tight uppercase"
             >
-              Engineering Projects<span className="text-neutral-500">.</span>
+              Engineering Projects<span className="dark:text-neutral-500 text-neutral-400">.</span>
             </motion.h2>
           </div>
 
@@ -146,7 +146,7 @@ export const Projects: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-neutral-400 text-sm max-w-md font-mono"
+            className="dark:text-neutral-400 text-neutral-600 text-sm max-w-md font-mono"
           >
             Prioritizing financial technology, loan management applications, core banking components, and business systems.
           </motion.p>
@@ -162,7 +162,7 @@ export const Projects: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: idx * 0.15 }}
               onClick={() => setSelectedProject(proj)}
-              className="group cursor-pointer glass-card rounded-3xl border border-white/10 overflow-hidden hover:border-white/40 transition-all duration-500 shadow-2xl"
+              className="group cursor-pointer glass-card rounded-3xl border dark:border-white/10 border-black/10 overflow-hidden hover:border-black/30 dark:hover:border-white/40 transition-all duration-500 shadow-2xl"
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
                 
@@ -171,21 +171,21 @@ export const Projects: React.FC = () => {
                   
                   {/* Number & Category */}
                   <div className="flex items-center justify-between">
-                    <span className="text-4xl font-mono font-extrabold text-white/20 group-hover:text-white transition-colors duration-300">
+                    <span className="text-4xl font-mono font-extrabold dark:text-white/20 text-neutral-300 dark:group-hover:text-white group-hover:text-black transition-colors duration-300">
                       {proj.number}
                     </span>
-                    <span className="text-xs font-mono text-neutral-400 border border-white/10 px-3 py-1 rounded-full uppercase tracking-wider">
+                    <span className="text-xs font-mono dark:text-neutral-400 text-neutral-600 border dark:border-white/10 border-black/10 px-3 py-1 rounded-full uppercase tracking-wider">
                       {proj.subtitle}
                     </span>
                   </div>
 
                   {/* Title & Description */}
                   <div>
-                    <h3 className="text-3xl sm:text-4xl font-bold font-heading text-white group-hover:translate-x-1 transition-transform duration-300 flex items-center justify-between">
+                    <h3 className="text-3xl sm:text-4xl font-bold font-heading dark:text-white text-neutral-900 group-hover:translate-x-1 transition-transform duration-300 flex items-center justify-between">
                       <span>{proj.title}</span>
-                      <ArrowUpRight size={24} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 text-white" />
+                      <ArrowUpRight size={24} className="opacity-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300 dark:text-white text-neutral-900" />
                     </h3>
-                    <p className="text-neutral-400 text-sm sm:text-base mt-3 leading-relaxed">
+                    <p className="dark:text-neutral-400 text-neutral-600 text-sm sm:text-base mt-3 leading-relaxed">
                       {proj.description}
                     </p>
                   </div>
@@ -195,7 +195,7 @@ export const Projects: React.FC = () => {
                     {proj.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="text-xs font-mono text-white bg-white/10 border border-white/15 px-3 py-1 rounded-full group-hover:border-white/30 transition-colors"
+                        className="text-xs font-mono dark:text-white text-neutral-800 dark:bg-white/10 bg-black/5 border dark:border-white/15 border-black/10 px-3 py-1 rounded-full dark:group-hover:border-white/30 group-hover:border-black/30 transition-colors"
                       >
                         {tech}
                       </span>
@@ -210,14 +210,14 @@ export const Projects: React.FC = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
-                        className="inline-flex items-center gap-2 text-xs font-mono text-white bg-white/10 hover:bg-white hover:text-black border border-white/20 px-4 py-2 rounded-xl transition-all duration-300"
+                        className="inline-flex items-center gap-2 text-xs font-mono dark:text-white text-neutral-900 dark:bg-white/10 bg-black/5 dark:hover:bg-white dark:hover:text-black hover:bg-neutral-900 hover:text-white border dark:border-white/20 border-black/15 px-4 py-2 rounded-xl transition-all duration-300"
                       >
                         <GithubIcon size={15} />
                         <span>GitHub Repository</span>
                       </a>
                     )}
 
-                    <span className="text-xs font-mono text-neutral-400 group-hover:text-white transition-colors flex items-center gap-1">
+                    <span className="text-xs font-mono dark:text-neutral-400 text-neutral-600 dark:group-hover:text-white group-hover:text-black transition-colors flex items-center gap-1">
                       <span>Explore Case Study</span>
                       <ArrowUpRight size={14} />
                     </span>
@@ -226,7 +226,7 @@ export const Projects: React.FC = () => {
                 </div>
 
                 {/* Project Image Preview Column */}
-                <div className="lg:col-span-6 h-full min-h-[300px] lg:min-h-[420px] relative overflow-hidden bg-neutral-950 border-t lg:border-t-0 lg:border-l border-white/10">
+                <div className="lg:col-span-6 h-full min-h-[300px] lg:min-h-[420px] relative overflow-hidden bg-neutral-950 border-t lg:border-t-0 lg:border-l dark:border-white/10 border-black/10">
                   <img
                     src={proj.image}
                     alt={proj.title}
@@ -244,7 +244,7 @@ export const Projects: React.FC = () => {
 
                   {/* Hover Overlay Button Badge */}
                   <div className="absolute bottom-6 right-6">
-                    <div className="glass-panel text-white text-xs font-mono px-4 py-2 rounded-full border border-white/20 shadow-xl flex items-center gap-2 group-hover:bg-white group-hover:text-black transition-all">
+                    <div className="glass-panel dark:text-white text-neutral-900 text-xs font-mono px-4 py-2 rounded-full border dark:border-white/20 border-black/15 shadow-xl flex items-center gap-2 dark:group-hover:bg-white dark:group-hover:text-black group-hover:bg-neutral-900 group-hover:text-white transition-all">
                       <span>View Details</span>
                       <ArrowUpRight size={14} />
                     </div>
@@ -270,7 +270,7 @@ export const Projects: React.FC = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedProject(null)}
-              className="absolute inset-0 bg-black/85 backdrop-blur-md"
+              className="absolute inset-0 dark:bg-black/85 bg-slate-900/60 backdrop-blur-md"
             />
 
             {/* Modal Card */}
@@ -278,31 +278,31 @@ export const Projects: React.FC = () => {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-3xl glass-panel border border-white/20 rounded-3xl max-h-[90vh] overflow-y-auto p-6 sm:p-8 z-10 space-y-6"
+              className="relative w-full max-w-3xl glass-panel border dark:border-white/20 border-black/10 rounded-3xl max-h-[90vh] overflow-y-auto p-6 sm:p-8 z-10 space-y-6 shadow-2xl"
             >
               {/* Close Button */}
               <button
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-6 right-6 p-2 rounded-full glass-card hover:bg-white/20 text-white transition-colors z-30"
+                className="absolute top-6 right-6 p-2 rounded-full glass-card hover:bg-neutral-200 dark:hover:bg-white/20 dark:text-white text-neutral-900 transition-colors z-30 cursor-pointer"
               >
                 <X size={20} />
               </button>
 
               {/* Modal Content */}
               <div>
-                <span className="text-xs font-mono text-neutral-400 border border-white/10 px-3 py-1 rounded-full uppercase tracking-wider">
+                <span className="text-xs font-mono dark:text-neutral-400 text-neutral-600 border dark:border-white/10 border-black/10 px-3 py-1 rounded-full uppercase tracking-wider">
                   {selectedProject.subtitle}
                 </span>
-                <h3 className="text-3xl font-bold font-heading text-white mt-3">
+                <h3 className="text-3xl font-bold font-heading dark:text-white text-neutral-900 mt-3">
                   {selectedProject.title}
                 </h3>
-                <p className="text-neutral-300 text-sm mt-2 leading-relaxed">
+                <p className="dark:text-neutral-300 text-neutral-700 text-sm mt-2 leading-relaxed">
                   {selectedProject.longDescription}
                 </p>
               </div>
 
               {/* Image Preview */}
-              <div className="relative rounded-2xl overflow-hidden border border-white/10 max-h-64">
+              <div className="relative rounded-2xl overflow-hidden border dark:border-white/10 border-black/10 max-h-64">
                 <img src={selectedProject.image} alt={selectedProject.title} className="w-full h-full object-cover" />
                 <div className="absolute top-3 left-3 z-20 pointer-events-none">
                   <span className="glass-panel bg-black/80 backdrop-blur-md text-white/90 text-[10px] font-mono tracking-widest uppercase px-3 py-1 rounded-full border border-white/25 shadow-xl flex items-center gap-1.5">
@@ -312,14 +312,13 @@ export const Projects: React.FC = () => {
                 </div>
               </div>
 
-
               {/* Features List */}
               <div className="space-y-3">
-                <h4 className="text-xs font-mono uppercase tracking-widest text-neutral-400">Key Features</h4>
+                <h4 className="text-xs font-mono uppercase tracking-widest dark:text-neutral-400 text-neutral-600">Key Features</h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {selectedProject.features.map((feat, i) => (
-                    <div key={i} className="flex items-start gap-2 text-xs text-neutral-300 bg-white/5 border border-white/10 p-3 rounded-xl">
-                      <CheckCircle2 size={14} className="text-white shrink-0 mt-0.5" />
+                    <div key={i} className="flex items-start gap-2 text-xs dark:text-neutral-300 text-neutral-700 dark:bg-white/5 bg-black/5 border dark:border-white/10 border-black/10 p-3 rounded-xl">
+                      <CheckCircle2 size={14} className="dark:text-white text-neutral-900 shrink-0 mt-0.5" />
                       <span>{feat}</span>
                     </div>
                   ))}
@@ -327,36 +326,36 @@ export const Projects: React.FC = () => {
               </div>
 
               {/* Architecture */}
-              <div className="p-4 bg-white/5 border border-white/10 rounded-2xl space-y-2">
-                <p className="text-xs font-mono text-neutral-400 uppercase tracking-widest flex items-center gap-2">
-                  <Layers size={14} className="text-white" /> Architecture Overview
+              <div className="p-4 dark:bg-white/5 bg-black/5 border dark:border-white/10 border-black/10 rounded-2xl space-y-2">
+                <p className="text-xs font-mono dark:text-neutral-400 text-neutral-600 uppercase tracking-widest flex items-center gap-2">
+                  <Layers size={14} className="dark:text-white text-neutral-900" /> Architecture Overview
                 </p>
-                <code className="text-xs font-mono text-white block">
+                <code className="text-xs font-mono dark:text-white text-neutral-900 block">
                   {selectedProject.architecture}
                 </code>
               </div>
 
               {/* GitHub Button */}
-              <div className="pt-4 flex items-center justify-between border-t border-white/10">
+              <div className="pt-4 flex items-center justify-between border-t dark:border-white/10 border-black/10">
                 {selectedProject.github ? (
                   <a
                     href={selectedProject.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-white text-black font-semibold text-xs font-mono px-6 py-3 rounded-xl hover:bg-neutral-200 transition-colors"
+                    className="inline-flex items-center gap-2 dark:bg-white dark:text-black bg-neutral-900 text-white font-semibold text-xs font-mono px-6 py-3 rounded-xl hover:opacity-90 transition-opacity cursor-pointer shadow-lg"
                   >
                     <GithubIcon size={16} />
                     <span>View Repository on GitHub</span>
                   </a>
                 ) : (
-                  <span className="text-xs font-mono text-neutral-400 border border-white/10 px-3 py-1.5 rounded-lg">
+                  <span className="text-xs font-mono dark:text-neutral-400 text-neutral-600 border dark:border-white/10 border-black/10 px-3 py-1.5 rounded-lg">
                     Internal Financial System Codebase
                   </span>
                 )}
 
                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="text-xs font-mono text-neutral-400 hover:text-white"
+                  className="text-xs font-mono dark:text-neutral-400 text-neutral-600 dark:hover:text-white hover:text-black cursor-pointer"
                 >
                   Close Modal
                 </button>

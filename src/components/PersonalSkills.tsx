@@ -13,7 +13,7 @@ const personalSkills = [
 
 export const PersonalSkills: React.FC = () => {
   return (
-    <section className="py-24 relative border-t border-white/10 bg-[#030303] bg-dots-pattern">
+    <section className="py-24 relative border-t dark:border-white/10 border-black/10 dark:bg-[#030303] bg-[#f8f9fc] transition-colors duration-400">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         
         {/* Section Header */}
@@ -24,8 +24,8 @@ export const PersonalSkills: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="flex items-center gap-3 mb-4"
         >
-          <span className="w-8 h-[1px] bg-white/40" />
-          <span className="text-xs font-mono uppercase tracking-widest text-neutral-400">06 / INTERPERSONAL CAPABILITIES</span>
+          <span className="w-8 h-[1px] dark:bg-white/40 bg-black/40" />
+          <span className="text-xs font-mono uppercase tracking-widest dark:text-neutral-400 text-neutral-600">06 / INTERPERSONAL CAPABILITIES</span>
         </motion.div>
 
         <motion.h2
@@ -33,9 +33,9 @@ export const PersonalSkills: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight uppercase mb-12"
+          className="text-4xl sm:text-5xl font-extrabold dark:text-white text-neutral-900 tracking-tight uppercase mb-12"
         >
-          Personal Skills<span className="text-neutral-500">.</span>
+          Personal Skills<span className="dark:text-neutral-500 text-neutral-400">.</span>
         </motion.h2>
 
         {/* Skills Cards Grid */}
@@ -49,16 +49,16 @@ export const PersonalSkills: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="group glass-card p-6 rounded-2xl border border-white/10 hover:border-white/30 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden"
+                className="group glass-card p-6 rounded-2xl border dark:border-white/10 border-black/10 dark:hover:border-white/30 hover:border-black/20 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden"
               >
                 <div className="flex items-center gap-4 mb-3">
-                  <div className="w-10 h-10 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center text-white group-hover:bg-white group-hover:text-black transition-all duration-300">
+                  <div className="w-10 h-10 rounded-xl dark:bg-white/10 bg-neutral-900 border dark:border-white/15 border-black/10 flex items-center justify-center text-white dark:group-hover:bg-white dark:group-hover:text-black group-hover:bg-neutral-800 transition-all duration-300">
                     <IconComponent size={20} />
                   </div>
-                  <h3 className="text-lg font-bold font-heading text-white">{skill.name}</h3>
+                  <h3 className="text-lg font-bold font-heading dark:text-white text-neutral-900">{skill.name}</h3>
                 </div>
 
-                <p className="text-xs text-neutral-400 font-normal leading-relaxed">
+                <p className="text-xs dark:text-neutral-400 text-neutral-600 font-normal leading-relaxed">
                   {skill.desc}
                 </p>
               </motion.div>
