@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
-import { ArrowDownRight, ShieldCheck, Sparkles, RefreshCw } from 'lucide-react';
+import { ArrowDownRight, ShieldCheck, Sparkles } from 'lucide-react';
 import me from '../assets/me.png';
 import cartoonSilver from '../assets/cartoon_silver.png';
 
@@ -180,32 +180,49 @@ export const Hero: React.FC = () => {
                 </filter>
               </defs>
 
-              {/* Glass fill base */}
+              {/* Glass fill base for front portrait card */}
               <path
-                d="M 90,110 L 375,12 L 378,145 L 465,185 L 275,595 L 60,480 Z"
+                d="M 90,110 L 375,12 L 378,145 L 345,275 L 275,595 L 60,480 Z"
                 fill="rgba(15, 15, 22, 0.3)"
               />
 
-              {/* Outer Glowing Edge Stroke */}
+              {/* Glass fill base for 3D right extension panel */}
               <path
-                d="M 90,110 L 375,12 L 378,145 L 465,185 L 275,595 L 60,480 Z"
+                d="M 378,145 L 460,185 L 460,500 L 275,595 L 345,275 Z"
+                fill="rgba(255, 255, 255, 0.04)"
+              />
+
+              {/* Front Glass Frame Stroke */}
+              <path
+                d="M 90,110 L 375,12 L 378,145 L 345,275 L 275,595 L 60,480 Z"
                 stroke="url(#frameEdgeGradient)"
                 strokeWidth="3"
                 filter="url(#glowGleam)"
                 className="filter drop-shadow-[0_0_20px_rgba(255,255,255,0.9)]"
               />
 
-              {/* Specular Gleam Glow Dots matching user's annotated image */}
+              {/* 3D Glass Side Extension Frame Stroke (EXACT MATCH TO USER'S WHITE DRAWING) */}
+              <path
+                d="M 378,145 L 460,185 L 460,500 L 275,595"
+                stroke="url(#frameEdgeGradient)"
+                strokeWidth="3"
+                filter="url(#glowGleam)"
+                className="filter drop-shadow-[0_0_20px_rgba(255,255,255,0.9)]"
+              />
+
+              {/* Specular Gleam Glow Dots matching user's drawing vertices */}
               <circle cx="375" cy="12" r="4" fill="#ffffff" className="animate-pulse filter drop-shadow-[0_0_12px_#ffffff]" />
               <circle cx="378" cy="145" r="3" fill="#ffffff" className="filter drop-shadow-[0_0_8px_#ffffff]" />
-              <circle cx="465" cy="185" r="3.5" fill="#ffffff" className="animate-pulse filter drop-shadow-[0_0_10px_#ffffff]" />
+              <circle cx="345" cy="275" r="3" fill="#ffffff" className="animate-pulse filter drop-shadow-[0_0_8px_#ffffff]" />
+              <circle cx="460" cy="185" r="4" fill="#ffffff" className="animate-pulse filter drop-shadow-[0_0_12px_#ffffff]" />
+              <circle cx="460" cy="500" r="3.5" fill="#ffffff" className="animate-pulse filter drop-shadow-[0_0_10px_#ffffff]" />
               <circle cx="275" cy="595" r="4.5" fill="#ffffff" className="animate-pulse filter drop-shadow-[0_0_15px_#ffffff]" />
             </svg>
 
-            {/* Clipped Full Portrait Container (Crisp, Bright, Unblurred) */}
+            {/* Clipped Full Portrait Container (Fills the Full 3D Glass Box Prism Shape) */}
             <div
               style={{
-                clipPath: 'polygon(18% 17.7%, 75% 1.9%, 75.6% 23.4%, 93% 29.8%, 55% 96%, 12% 77.4%)',
+                clipPath: 'polygon(18% 17.7%, 75% 1.9%, 92% 29.8%, 92% 80.6%, 55% 96%, 12% 77.4%)',
               }}
               className="absolute inset-0 w-full h-full bg-neutral-950 overflow-hidden cursor-pointer z-10"
               onClick={() => setShowRealPhoto(!showRealPhoto)}
@@ -245,7 +262,7 @@ export const Hero: React.FC = () => {
               <div className="absolute bottom-6 left-12 right-12 z-20 text-center sm:text-left">
                 <p className="text-[10px] font-mono text-neutral-300 uppercase tracking-widest flex items-center justify-center sm:justify-start gap-1.5 mb-0.5">
                   <Sparkles size={11} className="text-white" />
-                  {showRealPhoto ? 'Real Photo Revealed' : 'Silver Stylized Avatar'}
+                  {/* {showRealPhoto ? 'Real Photo Revealed' : 'Silver Stylized Avatar'} */}
                 </p>
                 <h3 className="text-xl sm:text-2xl font-bold font-heading text-white drop-shadow-md">Nok Sreyroth</h3>
                 <p className="text-xs text-neutral-200 mt-0.5 flex items-center justify-center sm:justify-start gap-1.5 font-medium">
@@ -253,108 +270,6 @@ export const Hero: React.FC = () => {
                 </p>
               </div>
             </div>
-
-            {/* Live Mode Toggle Badge Button (Upper Left of Image) */}
-            <div className="absolute top-[17%] left-[24%] z-30 pointer-events-auto">
-              <button
-                onClick={() => setShowRealPhoto(!showRealPhoto)}
-                className="glass-panel bg-black/85 backdrop-blur-md text-white text-[10px] font-mono px-3 py-1.5 rounded-full border border-white/40 shadow-2xl flex items-center gap-1.5 hover:bg-white hover:text-black transition-all duration-300"
-              >
-                <RefreshCw size={10} className="animate-spin text-emerald-400" />
-                <span className="font-bold">{showRealPhoto ? 'REAL PHOTO' : 'SILVER AVATAR'}</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              </button>
-            </div>
-
-            {/* FLOATING UI BADGES (EXACT 1:1 MATCH TO USER REFERENCE IMAGE) */}
-
-            {/* 1. TOP-LEFT BADGE: </ React TypeScript GraphQL */}
-            <motion.div
-              animate={{ y: [0, -6, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-              className="absolute top-[12%] left-[-4%] sm:left-[-2%] z-30 glass-card bg-[#0a0a0d]/90 border border-white/30 p-4 rounded-2xl shadow-[0_10px_35px_rgba(0,0,0,0.85)] backdrop-blur-xl w-36 space-y-1.5"
-            >
-              <div className="text-white text-lg font-mono font-bold tracking-tight mb-1">&lt;/&gt;</div>
-              <p className="text-xs font-mono text-neutral-300">React</p>
-              <p className="text-xs font-mono text-neutral-300">TypeScript</p>
-              <p className="text-xs font-mono text-neutral-300">GraphQL</p>
-              <div className="w-8 h-[2px] bg-white/80 mt-2 rounded-full" />
-            </motion.div>
-
-            {/* 2. TOP-RIGHT TEXT: Turn Ideas Into Real Products */}
-            <motion.div
-              animate={{ y: [0, 6, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-              className="absolute top-[3%] right-[-1%] sm:right-[1%] z-30 text-right space-y-1"
-            >
-              <p className="text-xs sm:text-sm font-heading text-neutral-200 leading-snug">
-                Turn Ideas <br />
-                Into <span className="text-white font-bold">Real</span> <br />
-                <span className="text-white font-bold">Products</span>
-              </p>
-              <div className="w-8 h-[2px] bg-white/80 ml-auto mt-1.5 rounded-full" />
-            </motion.div>
-
-            {/* 3. MIDDLE-RIGHT TECH STACK BADGE: React, Laravel, Python, Odoo */}
-            <motion.div
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-              className="absolute top-[27%] right-[-6%] sm:right-[-3%] z-30 glass-card bg-[#0a0a0d]/90 border border-white/30 p-4 rounded-2xl shadow-[0_10px_35px_rgba(0,0,0,0.85)] backdrop-blur-xl min-w-[135px] space-y-2.5"
-            >
-              <div className="flex items-center gap-2.5 text-xs font-mono text-neutral-200">
-                <span className="text-white text-sm">⚛️</span> <span className="font-semibold">React</span>
-              </div>
-              <div className="flex items-center gap-2.5 text-xs font-mono text-neutral-200">
-                <span className="text-white text-sm">💎</span> <span className="font-semibold">Laravel</span>
-              </div>
-              <div className="flex items-center gap-2.5 text-xs font-mono text-neutral-200">
-                <span className="text-white text-sm">🐍</span> <span className="font-semibold">Python</span>
-              </div>
-              <div className="flex items-center gap-2.5 text-xs font-mono text-neutral-200">
-                <span className="text-white font-mono font-extrabold text-[11px] tracking-tighter">odoo</span> <span className="font-semibold">Odoo</span>
-              </div>
-            </motion.div>
-
-            {/* 4. BOTTOM-LEFT BADGE: Build Better Together */}
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
-              className="absolute bottom-[20%] left-[-5%] sm:left-[-2%] z-30 glass-card bg-[#0a0a0d]/90 border border-white/30 p-4 rounded-2xl shadow-[0_10px_35px_rgba(0,0,0,0.85)] backdrop-blur-xl w-36 space-y-1.5"
-            >
-              <div className="flex items-end gap-1 h-5 text-white mb-1">
-                <span className="w-1.5 h-3 bg-white rounded-xs" />
-                <span className="w-1.5 h-5 bg-white rounded-xs" />
-                <span className="w-1.5 h-4 bg-white/80 rounded-xs" />
-              </div>
-              <p className="text-xs font-heading font-semibold text-neutral-200 leading-snug">
-                Build <br />
-                Better <br />
-                Together
-              </p>
-              <div className="w-8 h-[2px] bg-white/80 mt-2 rounded-full" />
-            </motion.div>
-
-            {/* 5. BOTTOM-RIGHT FLOATING LAPTOP GLASS CARD */}
-            <motion.div
-              animate={{ y: [0, -6, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-              className="absolute bottom-[4%] right-[-3%] sm:right-[0%] z-30 glass-card bg-[#0a0a0d]/90 border border-white/30 p-3 rounded-2xl shadow-[0_10px_35px_rgba(0,0,0,0.85)] backdrop-blur-xl w-44"
-            >
-              <div className="relative aspect-[16/10] bg-neutral-900 rounded-lg overflow-hidden border border-white/15 flex flex-col justify-between p-2 group">
-                <div className="absolute inset-0 bg-gradient-to-tr from-black via-neutral-900 to-neutral-800" />
-                <div className="relative z-10 w-full text-[9px] font-mono text-neutral-400 border-b border-white/10 pb-1 flex justify-between">
-                  <span className="text-white font-bold">IDE Workstation</span>
-                  <span className="text-emerald-400">● Active</span>
-                </div>
-                <div className="relative z-10 text-[10px] font-mono text-neutral-300 py-1 space-y-0.5">
-                  <p className="text-emerald-400">&gt; const app = buildLoanApp();</p>
-                  <p className="text-neutral-400">&gt; status: 200 OK</p>
-                </div>
-                <div className="relative z-10 w-full h-1 bg-white/20 rounded-full overflow-hidden">
-                  <div className="w-3/4 h-full bg-white animate-pulse" />
-                </div>
-              </div>
-            </motion.div>
 
           </motion.div>
 
